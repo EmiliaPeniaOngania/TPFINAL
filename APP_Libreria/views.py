@@ -247,7 +247,7 @@ def ObtenerAvatar(request):
 @login_required
 def LibrosFavoritos(request):
     lista= Imagen.objects.filter(user=request.user)
-    return render(request,"LibrosFavoritos.html",{"lista":lista,"avatar":ObtenerAvatar(request)})
+    return render(request,"LibrosFavoritos.html",{"lista":lista,"imagen":ObtenerImg(request),"avatar":ObtenerAvatar(request)})
 
 @login_required
 def SubirLibroFavorito(request):
@@ -259,28 +259,37 @@ def SubirLibroFavorito(request):
             return render(request,"LibroFavoritoCargaCorrecta.html",{'usuario':request.user,'mensaje': 'IMAGEN AGREGADA CORRECTAMENTE',"imagen":imagen.imagen.url,"avatar":ObtenerAvatar(request)})
     else:
         form=ImagenForm()
-    return render(request,"LibroFavoritoCarga.html",{"form":form,"avatar":ObtenerAvatar(request)})
+    return render(request,"LibroFavoritoCarga.html",{"form":form,"imagen":ObtenerImg(request)})
 
-
-@login_required
-def LibroFavoritoUppdate(request,id):
-    librofavorito=Imagen.objects.filter(id=id)
-    if request.method=='POST':
-        form=ImagenForm(request.POST, request.FILES)
-        if form.is_valid():
-            informacion:form.cleaned_data
-            librofavorito.nombre_libro=informacion['nombre_libro']
-            librofavorito.imagen=informacion['imagen']
-            librofavorito.save()
-            return render(request,"LibrosFavoritos.html",{"avatar":ObtenerAvatar(request)})
+def ObtenerImg(request):
+    lista=Imagen.objects.filter(user=request.user)
+    if(len(lista)!=0):
+        imagen=lista[0].imagen.url
     else:
-        form=ImagenForm(initial={'nombre_libro':librofavorito.nombre_libro,'imagen':librofavorito.imagen})
-        return render(request,"LibroFavoritoEditar.html",{"form":form,"id":id,"avatar":ObtenerAvatar(request)})
+        imagen=""
+    return imagen
+
+
+
+#@login_required
+#def LibroFavoritoUppdate(request,id):
+    #librofavorito=Imagen.objects.get(id=id)
+    #if request.method=='POST':
+        #form=ImagenForm(request.POST, request.FILES)
+        #if form.is_valid():
+            #informacion:form.cleaned_data
+            #librofavorito.nombre_libro=informacion['nombre_libro']
+            #librofavorito.imagen=informacion['imagen']
+            #librofavorito.save()
+            #return render(request,"LibrosFavoritos.html",{"avatar":ObtenerAvatar(request)})
+    #else:
+        #form=ImagenForm(initial={'nombre_libro':librofavorito.nombre_libro,'imagen':librofavorito.imagen})
+        #return render(request,"LibroFavoritoEditar.html",{"form":form,"librofavorito":librofavorito,"avatar":ObtenerAvatar(request)})
 
 
 @login_required
 def LibroFavoritoElimina(request,id):
-    librofavorito=Imagen.objects.get(id=id)
+    librofavorito=Imagen.objects.filter(id=id)
     librofavorito.delete()
     lista= Imagen.objects.filter(user=request.user)
-    return render(request,"LibroFavoritoEliminado.html",{"lista":lista,"avatar":ObtenerAvatar(request)})
+    return render(request,"LibroFavoritoElminado.html",{"lista":lista,"avatar":ObtenerAvatar(request)})

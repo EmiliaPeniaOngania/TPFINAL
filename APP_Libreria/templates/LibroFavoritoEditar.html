@@ -8,7 +8,7 @@
 <body>
 
     
-    <form action="{% url 'LibroFavoritoEditar' %}" method="post"  enctype="multipart/form-data">{% csrf_token %}
+    <form action="{% url 'LibroFavoritoEdita' librofavorito.id %}" method="post"  enctype="multipart/form-data">{% csrf_token %}
         
         <table>
             {{ form.as_table }}

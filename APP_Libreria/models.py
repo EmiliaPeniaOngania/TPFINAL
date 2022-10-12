@@ -46,7 +46,7 @@ class Imagen(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     nombre_libro= models.CharField(max_length=64)
     imagen= models.ImageField(upload_to="imagenes",null=True,blank=True)
-    fecha_posteo=models.DateField()
+    fecha_posteo=models.DateField(auto_now_add=True)
 
     
     def __str__(self):
