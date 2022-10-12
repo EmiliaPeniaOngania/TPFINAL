@@ -1,0 +1,27 @@
+{% extends "inicio.html" %}
+{% load static %}
+{% block titulo %}
+<h1 class="mb-5" >RESULTADO BUSQUEDA</h1>
+{% endblock %}
+{% block libreria %}
+<h1 style="text-align:center">RESULTADO DE BUSQUEDA</h1>
+{% if nombre %}
+
+<ul>
+    {% for stock in nombre %}
+        <li>Libro: {{ stock.nombre}}<br>
+            Autor: {{ stock.autor }}<br>
+            Genoro:{{ stock.genero}}<br>
+            Libros en stock: {{ stock.cantidad}}<br>
+            Reseña: {{ stock.pequeña_reseña }}</li>
+        
+    {% endfor %}
+
+{% else %}
+<p style="text-align:center">NO SE ENCONTRARON LIBROS</p>
+
+{% endif %}
+
+</ul>
+
+{% endblock %}

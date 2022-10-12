@@ -1,0 +1,25 @@
+{% extends "inicio.html" %}
+{% load static %}
+{% block titulo %}
+<h1 class="mb-5">EDITAR PERFIL</h1>
+{% endblock %}
+{% block libreria %}
+<p></p>
+
+<form method="post">{% csrf_token %}
+    <table  style="text-align: left">
+        {{ form.as_table }}
+    </table>
+    <input style = "margin-left: 200px" type="submit" name="Enviar"/>
+</form>
+
+<ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'cargaravatar' %}"><h6 style="text-align:left">Agregar Foto de Perfil</h6></a>
+    
+    </li>
+
+</ul>
+
+<p></p>
+{% endblock %}

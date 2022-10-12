@@ -1,0 +1,42 @@
+{% extends "inicio.html" %}
+{% load static %}
+{% block titulo %}
+<h1 class="mb-5">RESEÑA</h1>
+{% endblock %}
+{% block libreria %}
+
+
+
+{% if user.is_authenticated %}
+<ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'mis_resenias' %}"><h6 style="text-align:right;color:black">Mis reseñas</h6></a>
+    </li>
+
+</ul>
+{% endif %}
+
+<h3 style="text-align:center">RESEÑAS CRITICAS</h3>
+
+<ul>
+    {% for Resenia in lista %}
+        
+        <li>
+            <p>
+               
+            Libro:{{ Resenia.nombre_libro }} |
+            Puntaje:{{ Resenia.puntaje }} |
+            Reseña:{{ Resenia.reseña }} |
+            Usuario:{{ Resenia.user}}
+            </p>
+
+        </li>
+        <br>
+        
+            
+        
+        
+    {% endfor %}
+</ul>
+
+{% endblock %}

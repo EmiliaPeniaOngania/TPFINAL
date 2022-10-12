@@ -1,0 +1,34 @@
+{% extends "inicio.html" %}
+{% load static %}
+{% block titulo %}
+<h1 class="mb-5">EMPLEADOS</h1>
+{% endblock %}
+{% block libreria %}
+<p></p>
+<body>
+
+    <ul>
+        {% for Empleado in object_list %}
+            <li>
+                <p> Nombre de empleado:{{ Empleado.nombre }}</p>
+                <p> 
+                    <a href="{% url 'empleados_detalle' Empleado.id %}"> Ver </a> |
+                    <a href="{% url 'empleados_edit' Empleado.id %}"> Editar</a> |
+                    <a href="{% url 'empleados_borrar' Empleado.id %}"> Borrar</a>
+                </p>
+            </li>
+            <br>  
+            
+        {% endfor %}
+    
+        <p><a href="{% url 'empleado_nuevo' %}"> Agregar Empleado</a></p>
+        
+    </ul>
+
+    
+    </ul>
+</body>
+<p></p>
+
+
+{% endblock %}
