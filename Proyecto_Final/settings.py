@@ -58,7 +58,7 @@ ROOT_URLCONF = 'Proyecto_Final.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "APP_Libreria/templates","chat/templates"],
+        'DIRS': [BASE_DIR / "APP_Libreria/templates",BASE_DIR/"chat/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
