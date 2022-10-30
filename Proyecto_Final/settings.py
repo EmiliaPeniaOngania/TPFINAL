@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'APP_Libreria',
+    'chat',
+
 ]
 
 MIDDLEWARE = [
@@ -56,7 +58,7 @@ ROOT_URLCONF = 'Proyecto_Final.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "APP_Libreria/templates"],
+        'DIRS': [BASE_DIR / "APP_Libreria/templates","chat/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
