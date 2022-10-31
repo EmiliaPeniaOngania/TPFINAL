@@ -254,7 +254,7 @@ def SubirLibroFavorito(request):
     if request.method == 'POST':
         form= ImagenForm(request.POST, request.FILES)
         if form.is_valid():
-            imagen=Imagen (user=request.user,nombre_libro=form.cleaned_data['nombre_libro'],imagen=form.cleaned_data['imagen'])
+            imagen=Imagen (user=request.user,nombre_libro=form.cleaned_data['nombre_libro'],subtitulo=form.cleaned_data['subtitulo'],cuerpo=form.cleaned_data['cuerpo'],autor=form.cleaned_data['autor'],imagen=form.cleaned_data['imagen'])
             imagen.save()
             return render(request,"LibroFavoritoCargaCorrecta.html",{'usuario':request.user,'mensaje': 'IMAGEN AGREGADA CORRECTAMENTE',"imagen":imagen.imagen.url,"avatar":ObtenerAvatar(request)})
     else:
