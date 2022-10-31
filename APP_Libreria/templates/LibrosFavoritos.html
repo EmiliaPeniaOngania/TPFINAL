@@ -15,7 +15,7 @@
                 Id:{{ Imagen.id }} |
                 Libro:{{ Imagen.nombre_libro }} |
                 subtitulo:{{ Imagen.subtitulo }} |
-                cuerpo:{{ Imagen.cuerpo }} |
+                cuerpo:{{ Imagen.cuerpo |safe }} |
                 autor:{{ Imagen.autor }} |
                 Fecha Posteo:{{ Imagen.fecha_posteo }} |
             </p>

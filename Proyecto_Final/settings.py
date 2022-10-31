@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'APP_Libreria',
     'chat',
+    'ckeditor',
 
 ]
 

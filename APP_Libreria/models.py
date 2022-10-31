@@ -3,6 +3,7 @@ from distutils.command.upload import upload
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class Empleado(models.Model):
@@ -46,7 +47,7 @@ class Imagen(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     nombre_libro= models.CharField(max_length=64)
     subtitulo= models.CharField(max_length=64)
-    cuerpo=models.CharField(max_length=500)
+    cuerpo=RichTextField(blank=True, null=True)
     autor=models.CharField(max_length=64)
     imagen= models.ImageField(upload_to="imagenes",null=True,blank=True)
     fecha_posteo=models.DateField(auto_now_add=True)
