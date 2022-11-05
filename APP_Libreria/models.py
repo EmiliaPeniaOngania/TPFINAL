@@ -43,6 +43,13 @@ class Avatar(models.Model):
     def __str__(self):
         return f"User:{self.user} - Imagen:{self.imagen}"
 
+class InformacionAdicional(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    descripcion_personal= models.CharField(max_length=200,null=True,blank=True)
+    pagina_web=models.URLField(max_length=200,null=True,blank=True)
+    def __str__(self):
+        return f"User:{self.user} - DescripcionPersonal:{self.descripcion_personal} - PaginaWeb:{self.pagina_web}"
+
 class Imagen(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     nombre_libro= models.CharField(max_length=64)

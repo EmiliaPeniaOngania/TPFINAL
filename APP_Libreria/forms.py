@@ -26,6 +26,10 @@ class UserEditForm(UserCreationForm):
 class AvatarForm(forms.Form):
     imagen= forms.ImageField()
 
+class InformacionAdicionalForm(forms.Form):
+    descripcion_personal= forms.CharField(max_length=200)
+    pagina_web=forms.URLField(max_length=200)
+
 class ReseniaForm(forms.Form):
     nombre_libro = forms.CharField(max_length=64)
     puntaje = forms.IntegerField()

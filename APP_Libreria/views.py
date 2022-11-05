@@ -209,6 +209,23 @@ def EditarPerfil(request):
         return render(request, "editarperfil.html", {"form":form,"usuario":usuario,"avatar":ObtenerAvatar(request)})
 
 @login_required
+def EditarPerfilInfoAd(request):
+    usuario=request.user
+    if request.method=="POST":
+        form = InformacionAdicionalForm(request.POST)
+        if form.is_valid():
+            informacion=form.cleaned_data
+            usuario.descripcion_personal=informacion['descripcion_personal']
+            usuario.pagina_web=informacion['pagina_web']
+            usuario.save()
+            return render (request, "editarperfilCorrecto.html", {"mensaje":f"Usuario Modificado Correctamente","avatar":ObtenerAvatar(request)})
+        else:
+            return render (request, "editarperfilError.html", {"mensaje":f"Formularios Erroneo","avatar":ObtenerAvatar(request)})
+    else:
+        form=UserEditForm(instance=usuario)
+        return render(request, "perfilmasinformacion.html", {"form":form,"usuario":usuario,"avatar":ObtenerAvatar(request)})
+
+@login_required
 def inicio(request):
     return render (request, "inicio.html",{"avatar":ObtenerAvatar(request)})
 

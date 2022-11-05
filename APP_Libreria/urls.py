@@ -36,6 +36,7 @@ urlpatterns = [
     path("registrousuario/", registracion, name="registrousuario"),
     path("logout/", LogoutView.as_view(template_name="logout.html"), name="logout"),
     path("editarperfil/", EditarPerfil, name="editarperfil"),
+    path("editarinfoad/", EditarPerfilInfoAd, name="perfilmasinformacion"),
     path("cargaravatar/", cargaravatar, name="cargaravatar"),
     path("eliminaavatar/", eiiminaavatar, name="eliminaavatar")
     ]
